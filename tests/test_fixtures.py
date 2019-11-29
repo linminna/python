@@ -17,6 +17,8 @@ def tearDownModule():
 
 
 class MyTest(unittest.TestCase):
+    """  model、class、case之启动结束方法执行 """
+
     @classmethod
     def setUpClass(cls):
         print("-----class-setUpClass-----")

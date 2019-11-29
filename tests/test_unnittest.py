@@ -15,6 +15,7 @@ from calculator import Calculator
 
 
 class TestCalculator(unittest.TestCase):
+    """  单元测试框架、测试套件 """
 
     # 测试用例前置动作
     def setUp(self):

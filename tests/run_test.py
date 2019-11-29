@@ -1,4 +1,7 @@
+import time
 import unittest
+
+from HTMLTestRunner import HTMLTestRunner
 
 # 一次性执行多个测试文件, 指定扫描目录 及 设置规则pattern
 # unittest.defaultTestLoader.discover(test_dir, pattern="test*.py")
@@ -7,5 +10,10 @@ import unittest
 test_dir = ""
 suits = unittest.defaultTestLoader.discover(test_dir, pattern="test*.py")
 if __name__ == '__main__':
-    runner = unittest.TextTestRunner()
+    # runner = unittest.TextTestRunner()
+    timeStr = time.strftime("%Y_%m_%d_%H_%M_%S")
+    # fp = open("./report/" + timeStr + "_result.html", "wb")
+    fp = open("./report/result.html", "wb")
+    runner = HTMLTestRunner(stream=fp, title='百度搜索测试报告', description='运行')
     runner.run(suits)
+    fp.close()
