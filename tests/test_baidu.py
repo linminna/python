@@ -19,7 +19,7 @@ from selenium import webdriver
 # 如果没有unpack，那么[a1,a11] 当成一个参数传入用例运行
 # 如果有unpack，那么[a1,a11] 被分解开，按照用例中的两个参数传递
 # 读取json文件作为参数列表  @file_data(parent_path + './file/ddt_data.json')
-# 若要读取yml文件，需要先 pip install pyyaml  此处安装失败
+# 若要读取yml文件，需要先 pip install pyyaml，注意：此处开始安装时失败，后面在将pip升级后 安装成功。
 # 获取当前文件的父目录  os.path.dirname(os.path.dirname(__file__))
 # 当前文件所在目录  os.path.dirname(__file__)
 
@@ -60,13 +60,13 @@ class TestBaidu(unittest.TestCase):
     @parameterized.expand([
         ("c1", "lmn"), ("c2", "hk")
     ])
-    def test_search(self, name, search_key):  # 此处，name对应元祖中第一个参数，search_key对应第二个
+    def test_search1(self, name, search_key):  # 此处，name对应元祖中第一个参数，search_key对应第二个
         print("----parameterized----" + search_key)
         self.baidu_search(search_key)
         self.assertEqual(self.driver.title, search_key + "_百度搜索")
 
     # ddt 参数化使用1：元组
-    @data(("a1", "a11"), ("a2", "a22"))
+    @data(("a1", "a"), ("a2", "aa"))
     @unpack
     def test_search2(self, case, search_key):  # 此处，case对应元祖中第一个参数，search_key对应第二个
         print("---ddt-第一组---" + search_key)
@@ -98,12 +98,12 @@ class TestBaidu(unittest.TestCase):
         self.baidu_search(search_key)
         self.assertEqual(self.driver.title, search_key + "_百度搜索")
 
-    # @file_data(parent_path + './file/ddt_data.yml')
-    # def test_read_yml(self, case):
-    #     search_key = case[0]["search_key"]
-    #     print("---ddt-第五组---" + search_key)
-    #     self.baidu_search(search_key)
-    #     self.assertEqual(self.driver.title, search_key + "_百度搜索")
+    @file_data(parent_path + './file/ddt_data.yml')
+    def test_read_yml(self, case):
+        search_key = case[0]["search_key"]
+        print("---ddt-第五组---" + search_key)
+        self.baidu_search(search_key)
+        self.assertEqual(self.driver.title, search_key + "_百度搜索")
 
 
 if __name__ == '__main__':
