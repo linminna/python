@@ -1,0 +1,49 @@
+
+Selenium 三大组件 selenium webdriver + selenium ide + selenium grid
+
+Selenium Grid 分布式执行测试
+解决重复执行测试、解决多浏览器兼容这是UI自动化的价值
+
+Selenium Grid实际它是基于Selenium RC的，而所谓的分布式结构就是由一个hub节点和若干个node代理节点组成。
+         Hub用来管理各个代理节点的注册信息和状态信息，并且接受远程客户端代码的请求调用，然后把请求的命令转发给代理节点来执行。
+
+    IDE 只能运行在firefox上,
+    webdriver 能够在不同的浏览器上执行你的web测试用例。其支持的浏览器有：Firefox、Chrome、IE、Edge、Safari、Opera、phantomjs等等。
+            支持使用不同的编程语言来写测试脚本。
+
+    Selenium RC和webdriver的区别  https://www.jianshu.com/p/226d655426c6
+        在webdriver发布前selenium1.0版本叫做selenium remote control，简称Selenium RC。
+    （1）在运行速度方面，webdriver会远远好于Selenium RC。
+        原因是Webdriver直接调用浏览器原生API进行驱动，而Selenium RC则通过Selenium Core（javascript实现）来间接驱动浏览器。
+    （2）webdriver直接与浏览器进行交互； Selenium RC通过Selenium RC Server中转才能与浏览器进行交互。
+    （3）Webdriver的API简洁，只要掌握几个常用的即可进行测试； Selenium RC的API复杂冗余，不利于学习掌握。
+    （4）webdriver除了驱动可视化的浏览器，还可以驱动内存模式的浏览器，比如HtmlUnit browser，phantomjs
+        Selenium RC只能驱动可视化的浏览器。
+    （5）webdriver无法及时的支持最新版本的浏览器，每次浏览器升级后，需要下载新的驱动程序。
+    （6）webdriver必须基于脚本模式开发测试用例。
+
+
+https://blog.csdn.net/ouyanggengcheng/article/details/79935657
+下载、配置、运行 selenium-server
+https://selenium.dev/downloads/ 下载 selenium-server-standalone-x.xxx.xx.jar
+
+启动hub （需要依托java环境）
+
+启动hub后，就需要运行节点啦，最少都要有一个node节点；node节点 既可以与hub在同一台机器上运行， 也可以放在不同主机上。
+
+java -jar selenium-server-standalone-2.53.1.jar -role hub    -maxSession 10 -port 4444（默认端口）
+java -jar selenium-server-standalone-2.53.1.jar -role node   -port 5555（也是默认端口）
+    当node节点与hub节点不在同一主机上时，需加上 -hub http://192.168.0.245:4444/grid/register -maxSession 5可省略
+    -browser browserName=firefox,seleniumProtocol=WebDriver,maxInstances=5 ,platform=WINDOWS,version=45.0.2   设置浏览器内容，
+
+浏览器打开地址：http://localhost:4444/grid/console 可查看注册信息
+
+
+hub请求转发
+node节点在hub中注册成功后，会生成一个session保存在hub中，而session中记录node的信息，而当客户端代码请求hub时，hub收到请求分析后去session里面匹配node的信息然后转发到节点运行。
+
+DesiredCapabilities capability = new DesiredCapabilities(); 进行配置
+
+
+
+

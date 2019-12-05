@@ -1,0 +1,64 @@
+# 区别：
+
+unittest python自带的测试库
+pytest 第三方单元测试框架，插件丰富 可通过conftest.py文件配置属性（浏览器的启动、关闭，测试用例执行失败自动截图等）
+       更适合做UI自动化测试
+
+用例设计规则
+# 1.unittest
+# （1）测试类必须继承unittest.TestCase
+# （2）测试函数必须以”test_”开头
+# （3）测试类必须有unittest.main()方法
+# 2.pytest
+# （1）测试文件的文件名必须以”test_”开头，或者以”_test”结尾
+# （2）测试类命名必须以”Test”开头
+# （3）测试函数名必须以”test”开头
+# （4）测试类里面不能使用”__init__”方法
+
+用例前置和后置
+1.unittest前置和后置
+（1）通过setup每个用例执行前执行，teardown每个用例执行后执行
+（2）通过setupclass类里面所有用例执行前执行，teardownclass类里面所有用例执行后执行
+2.pytest前置和后置
+（1）模块级别：setup_module/teardown_module，整个.py全部用例开始前执行/全部用例执行完后执行
+（2）函数级别：setup_function/teardown_function，只对函数级别生效，每个用例开始前和结束后执行一次
+（3）类级别：setup_class/teardown_function,只对类级别生效，类里面所有用例开始前执行一次，所有用例执行完执行一次
+（4）方法级别：setup_method/teardown_method,只是类里面方法级别生效，方法开始前执行一致，方法结束后执行一次
+（5）方法级别：setup/teardown，这个与setup_method/teardown_method用法很类似，但是级别比method级别要低，
+              也就是说在同一个方法中会先执行setup_method再执行setup，方法结束后先执行teardown再执行teardown_method
+【备注】
+    与类和实例无绑定关系的function都属于函数（function）；
+    与类和实例有绑定关系的function都属于方法（method）。
+
+断言
+  1.unittest提供了assertEqual、assertIn、assertTrue、assertFalse。
+　2.pytest直接使用assert 表达式。
+
+参数化
+1.unittest参数化
+  （1）可以通过nose_parameterized来实现，格式：@parameterized.expand(data), ‘data’为list格式的参数化的数据
+  （2）ddt 参数化 元组、列表、字典格式都可以
+2.pytest参数化
+  通过装饰器@pytest.mark.parametrize()来实现
+
+失败重试机制
+　　1、unittest无此功能。
+　　2、pytest支持用例执行失败重跑，pytest-rerunfailures插件。
+
+生成报告方式
+1.unittest
+  通过HTMLTestRunner生成
+2.pytest
+ （1）通过pytest-html生成html格式报告
+
+用例分类执行
+1、unittest默认执行全部用例，也可以通过加载testsuit，执行部分用例。
+2、pytest可以通过@pytest.mark来标记类和方法，pytest.main加入参数("-m")可以只运行标记的类和方法。
+
+
+
+
+
+
+
+

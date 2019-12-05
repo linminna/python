@@ -156,3 +156,6 @@ crashlytics-build.properties
 
 __pycache__/*
 venv/*
+
+*.pyc
+*.log
