@@ -31,8 +31,8 @@ https://selenium.dev/downloads/ 下载 selenium-server-standalone-x.xxx.xx.jar
 
 启动hub后，就需要运行节点啦，最少都要有一个node节点；node节点 既可以与hub在同一台机器上运行， 也可以放在不同主机上。
 
-java -jar selenium-server-standalone-2.53.1.jar -role hub    -maxSession 10 -port 4444（默认端口）
-java -jar selenium-server-standalone-2.53.1.jar -role node   -port 5555（也是默认端口）
+java -jar selenium-server-standalone-2.53.1.jar -role hub   -maxSession 10 -port 4444（默认端口）
+java -jar selenium-server-standalone-2.53.1.jar -role node  -port 5555（也是默认端口）
     当node节点与hub节点不在同一主机上时，需加上 -hub http://192.168.0.245:4444/grid/register -maxSession 5可省略
     -browser browserName=firefox,seleniumProtocol=WebDriver,maxInstances=5 ,platform=WINDOWS,version=45.0.2   设置浏览器内容，
 
