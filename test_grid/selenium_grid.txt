@@ -1,8 +1,9 @@
 
 Selenium 三大组件 selenium webdriver + selenium ide + selenium grid
 
-Selenium Grid 分布式执行测试
-解决重复执行测试、解决多浏览器兼容这是UI自动化的价值
+selenium ide 支持多种浏览器操作，可实现简单的浏览器操作的录制与回放功能。 https://github.com/SeleniumHQ/selenium-ide
+selenium2.0 中主推的webdriver，通过原生浏览器支持或浏览器扩展来直接控制浏览器。 可将其看作是Selenium RC的替代品（在3中直接去掉了）
+Selenium Grid 分布式执行测试， 解决重复执行测试、解决多浏览器兼容这是UI自动化的价值
 
 Selenium Grid实际它是基于Selenium RC的，而所谓的分布式结构就是由一个hub节点和若干个node代理节点组成。
          Hub用来管理各个代理节点的注册信息和状态信息，并且接受远程客户端代码的请求调用，然后把请求的命令转发给代理节点来执行。
