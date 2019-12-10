@@ -21,7 +21,8 @@ def send_mail(report):
     subject = "自动化测试报告"
     # 邮件正文
     content = ['lmn-test', '正文，请查看附件']
-    # 发送邮件
+    # 发送邮件（若要给多个用户发送邮件，需要将收件人放至list即可）
+    # report 邮件附件的路径
     yag.send('1434935576@qq.com', subject, content, report)
     print("---email-send-success----")
 

@@ -7,11 +7,11 @@ from poium import Page, PageElement
 # 在运行时选择浏览器，而不是类级别
 # 不需要直接接触selenium
 
-# 百度page层，获取页面上的元素
-class BaiduPage(Page):
+# 注意：该类下需要定义root_uri，否则会报错
 
-    def __init__(self, driver):
-        self.driver = driver
+# 百度page层，获取页面上的元素
+class BaiduPage(Page):  # BasePage
+    root_uri = ""
 
     search_input = PageElement(id_="kw", timeout=5, describe="搜索内容")
     search_button = PageElement(id_="su")

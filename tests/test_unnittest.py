@@ -26,38 +26,38 @@ class TestCalculator(unittest.TestCase):
         print("----end----")
 
     def test_add(self):
-        print("=====test_add=======")
+        # print("=====test_add=======")
         c = Calculator(1, 1)
         num = c.add()
         self.assertEqual(num, 2)
 
     def test_sub(self):
-        print("=====test_sub=======")
+        # print("=====test_sub=======")
         c = Calculator(1, 1)
         num = c.sub()
         self.assertEqual(num, 0)
 
     def test_mul(self):
-        print("=====test_mul=======")
+        # print("=====test_mul=======")
         c = Calculator(1, 1)
         num = c.mul()
         self.assertEqual(num, 1)
 
     def test_div(self):
-        print("=====test_div=======")
+        # print("=====test_div=======")
         c = Calculator(1, 1)
         num = c.div()
         self.assertEqual(num, 1)
 
 
 if __name__ == '__main__':
-    # unittest.main()
+    unittest.main()
     # 创建测试套件
-    suit = unittest.TestSuite()
-    suit.addTest(TestCalculator("test_add"))
-    suit.addTest(TestCalculator("test_sub"))
-    suit.addTest(TestCalculator("test_mul"))
-    suit.addTest(TestCalculator("test_div"))
-    # 创建测试运行器
-    runner = unittest.TextTestRunner()
-    runner.run(suit)
+    # suit = unittest.TestSuite()
+    # suit.addTest(TestCalculator("test_add"))
+    # suit.addTest(TestCalculator("test_sub"))
+    # suit.addTest(TestCalculator("test_mul"))
+    # suit.addTest(TestCalculator("test_div"))
+    # # 创建测试运行器
+    # runner = unittest.TextTestRunner()
+    # runner.run(suit)

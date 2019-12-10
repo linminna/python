@@ -59,5 +59,5 @@ def test_fail_rerun():
 
 
 if __name__ == '__main__':
-    # pytest.main(['-svq'])
+    # pytest.main(['-svq'])  通过数组指定多个参数
     pytest.main(['-s'])

@@ -1,8 +1,20 @@
 # 区别：
 
 unittest python自带的测试库
-pytest 第三方单元测试框架，插件丰富 可通过conftest.py文件配置属性（浏览器的启动、关闭，测试用例执行失败自动截图等）
-       更适合做UI自动化测试
+       使用中必须写测试类，继承 unittest.TestCase
+       其中 TestCase提供了用于测试结果的断言方法  self.assertEqual(self.driver.title, "page object_百度搜索")
+
+pytest 第三方单元测试框架  简单、灵活、扩展丰富
+       更适合做UI自动化测试    插件丰富 可通过conftest.py文件配置属性（浏览器的启动、关闭，测试用例执行失败自动截图等）
+       可以不创建测试类  pytest.main() 默认执行当前文件中所有以 test开头的函数
+       没有提供专门的断言方法 使用python自带断言   assert a > b
+
+unittest，浏览器的启动或关闭只能基于测试方法或测试类
+          本身不支持失败截图
+pytest，可以通过在 conftest.py 文件配置 全局浏览器的启动或关闭
+          pytest-html可在失败时自动截图，同样需在 conftest.py 配置
+          pytest-rerunfailures 可实现失败重跑
+
 
 用例设计规则
 # 1.unittest
@@ -19,6 +31,7 @@ pytest 第三方单元测试框架，插件丰富 可通过conftest.py文件配�
 1.unittest前置和后置
 （1）通过setup每个用例执行前执行，teardown每个用例执行后执行
 （2）通过setupclass类里面所有用例执行前执行，teardownclass类里面所有用例执行后执行
+
 2.pytest前置和后置
 （1）模块级别：setup_module/teardown_module，整个.py全部用例开始前执行/全部用例执行完后执行
 （2）函数级别：setup_function/teardown_function，只对函数级别生效，每个用例开始前和结束后执行一次
@@ -30,9 +43,11 @@ pytest 第三方单元测试框架，插件丰富 可通过conftest.py文件配�
     与类和实例无绑定关系的function都属于函数（function）；
     与类和实例有绑定关系的function都属于方法（method）。
 
+
 断言
   1.unittest提供了assertEqual、assertIn、assertTrue、assertFalse。
 　2.pytest直接使用assert 表达式。
+
 
 参数化
 1.unittest参数化
@@ -50,6 +65,7 @@ pytest 第三方单元测试框架，插件丰富 可通过conftest.py文件配�
   通过HTMLTestRunner生成
 2.pytest
  （1）通过pytest-html生成html格式报告
+
 
 用例分类执行
 1、unittest默认执行全部用例，也可以通过加载testsuit，执行部分用例。
