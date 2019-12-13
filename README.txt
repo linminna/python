@@ -262,6 +262,28 @@ Grid分布式测试 由一个主节点Hub 和 若干个 代理节点node组成�
 
 # desired_capabilities 用于定义运行的浏览器、版本、平台等信息，这里必须定义，否则将会报错 SessionNotCreatedException
 
+---------------------------------------------------------------------------------------------------------
+appium   移动自动化测试工具，支持安卓、ios两大平台，并支持多种编程
+移动应用类型：
+    Native App 原生应用：为特定移动设备或平台开发的应用程序
+    Mobile Web App 移动web应用：通过移动浏览器访问的应用程序，主要通过h5、js等开发
+    Hybrid App 混合移动：使用网络技术（js。。）开发，但嵌入在app中运行
+
+XCUITest 苹果公司于ios9.3版本推出的自动化框架
+UIAutomator2 基于android 的自动化框架，允许用户构建和运行ui测试。
+    appium使用google公司的UIAutomator2在真实设备或模拟器上执行命令。
+    appium使用appium-android-bootstrap模块与 UIAutomator2进行交互，将命令发送至设备并进行执行。
+
+appium 需要在pc上启动一个server，监听客户端自动化测试的运行，并将请求发送至对应的移动设备或模拟器运行。
+appium server已停止更新，由appium desktop替代
+
+Android studio是 Android应用的集成开发工具，用于开发与调试Android应用。
+https://developer.android.google.cn/studio
+https://github.com/appium/appium-desktop
+
+
+
+
 
 
 
